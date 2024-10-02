@@ -1,72 +1,77 @@
+// import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
+// void main() {
+//   runApp(const MaterialApp(
+//     title: 'My App',
+//     home: SafeArea(
+//       child: MyScaffold(),
+//     ),
+//   ));
+// }
 
-void main() {
-  runApp(const MyApp());
-}
+// class MyAppBar extends StatelessWidget {
+//   const MyAppBar({required this.title, super.key});
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+//   // Fields in a Widget subclass are always marked "final".
+//   final Widget title;
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Calculator ',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       height: 56, // in logical pixels
+//       padding: const EdgeInsets.symmetric(horizontal: 8),
+//       decoration: BoxDecoration(color: Colors.blue[500]),
+//       // Row is a horizontal, linear layout.
+//       child: Row(
+//         children: [
+//           IconButton(
+//             icon: const Icon(Icons.menu), // Use 'const' for better performance
+//             tooltip: 'Navigation menu',
+//             onPressed: () {
+//               // Add functionality for the button if needed
+//             },
+//           ),
+//           // Expanded expands its child to fill the available space.
+//           Expanded(
+//             child: title,
+//           ),
+//           const IconButton(
+//             icon: Icon(Icons.search), // Use 'const' for better performance
+//             tooltip: 'Search',
+//             onPressed: () {
+//               // Add functionality for the button if needed
+//             },
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+// class MyScaffold extends StatelessWidget {
+//   const MyScaffold({super.key});
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-    void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text(" Calculator"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Current Counter: '),
-            Text('$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            ElevatedButton(
-              onPressed: _incrementCounter,
-              child: const Icon(Icons.add_box_outlined),
-            ),
-
-            ElevatedButton(
-              onPressed: _decrementCounter,
-              child: const Icon(Icons.remove_circle_outline),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
+//   @override
+//   Widget build(BuildContext context) {
+//     // Material is a conceptual piece of paper on which the UI appears.
+//     return Material(
+//       // Column is a vertical, linear layout.
+//       child: Column(
+//         children: [
+//           MyAppBar(
+//             title: Text(
+//               'Example title',
+//               style: Theme.of(context).textTheme.headline6, // Updated to access the correct text theme property
+//             ),
+//           ),
+//           // You can add more widgets to the column as needed.
+//           Expanded(
+//             child: Center(
+//               child: Text('Hello, world!'),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
