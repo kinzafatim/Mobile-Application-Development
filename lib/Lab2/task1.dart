@@ -2,23 +2,26 @@
 // import 'package:flutter/material.dart';
 
 // void main() {
-//   runApp(const MyApp());
+//   runApp(MaterialApp(
+//     title:  "xyz",
+//     home: MyHomePage(),
+//   ));
 // }
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
+// // class MyApp extends StatelessWidget {
+// //   const MyApp({Key? key}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Lab 2 Task 1 ',
-//       theme: ThemeData(
-//         primarySwatch: Colors.red,
-//       ),
-//       home: MyHomePage(),
-//     );
-//   }
-// }
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return MaterialApp(
+// //       title: 'Lab 2 Task 1 ',
+// //       theme: ThemeData(
+// //         primarySwatch: Colors.red,
+// //       ),
+// //       home: MyHomePage(),
+// //     );
+// //   }
+// // }
 
 // class MyHomePage extends StatefulWidget {
 //   @override

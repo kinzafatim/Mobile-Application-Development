@@ -1,77 +1,164 @@
 // import 'package:flutter/material.dart';
-
 // void main() {
-//   runApp(const MaterialApp(
-//     title: 'My App',
-//     home: SafeArea(
-//       child: MyScaffold(),
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+// 	return MaterialApp(
+//   	debugShowCheckedModeBanner: false,
+//   	title: 'Timetable App',
+//   	theme: ThemeData(primarySwatch: Colors.blue),
+//   	home: HomePage(),
+// 	);
+//   }
+// }
+
+// class HomePage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+// 	return Scaffold(
+//   	appBar: AppBar(title: Text('TimeTable')),
+//   	body: GridView.builder(
+//     	gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+//     	itemCount: 8,
+//     	itemBuilder: (context, index) {
+//       	return GestureDetector(
+//         	onTap: () {
+//           	Navigator.push(
+//             	context,
+//             	MaterialPageRoute(builder: (context) => SemesterPage(semester: index + 1)),
+//           	);
+//         	},
+//         	child: Card(
+// 				margin: EdgeInsets.all(10),
+// 				child: Container(
+// 					decoration: BoxDecoration(
+// 						gradient: LinearGradient(
+// 							colors: [
+// 								Colors.blue,       // First shade
+// 								 Colors.lightBlue,  // Second shade
+// 								 ],
+// 								 begin: Alignment.topLeft,
+//         end: Alignment.bottomRight,
+//       ),
 //     ),
-//   ));
-// }
-
-// class MyAppBar extends StatelessWidget {
-//   const MyAppBar({required this.title, super.key});
-
-//   // Fields in a Widget subclass are always marked "final".
-//   final Widget title;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 56, // in logical pixels
-//       padding: const EdgeInsets.symmetric(horizontal: 8),
-//       decoration: BoxDecoration(color: Colors.blue[500]),
-//       // Row is a horizontal, linear layout.
-//       child: Row(
-//         children: [
-//           IconButton(
-//             icon: const Icon(Icons.menu), // Use 'const' for better performance
-//             tooltip: 'Navigation menu',
-//             onPressed: () {
-//               // Add functionality for the button if needed
-//             },
-//           ),
-//           // Expanded expands its child to fill the available space.
-//           Expanded(
-//             child: title,
-//           ),
-//           const IconButton(
-//             icon: Icon(Icons.search), // Use 'const' for better performance
-//             tooltip: 'Search',
-//             onPressed: () {
-//               // Add functionality for the button if needed
-//             },
-//           ),
-//         ],
+//     child: Center(
+//       child: Text(
+//         'Semester ${index + 1}',
+//         style: TextStyle(fontSize: 20, color: Colors.white), // Adjust color for contrast
 //       ),
-//     );
+//     ),
+//   ),
+// ),
+
+//       	);
+//     	},
+//   	),
+// 	);
 //   }
 // }
 
-// class MyScaffold extends StatelessWidget {
-//   const MyScaffold({super.key});
+
+// class SemesterPage extends StatelessWidget {
+//   final int semester;
+
+//   SemesterPage({required this.semester});
 
 //   @override
 //   Widget build(BuildContext context) {
-//     // Material is a conceptual piece of paper on which the UI appears.
-//     return Material(
-//       // Column is a vertical, linear layout.
-//       child: Column(
-//         children: [
-//           MyAppBar(
-//             title: Text(
-//               'Example title',
-//               style: Theme.of(context).textTheme.headline6, // Updated to access the correct text theme property
-//             ),
-//           ),
-//           // You can add more widgets to the column as needed.
-//           Expanded(
-//             child: Center(
-//               child: Text('Hello, world!'),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
+// 	return Scaffold(
+//   	appBar: AppBar(title: Text('Semester $semester')),
+//   	body: Center(
+//     	child: ElevatedButton(
+//       	child: Text('Proceed'),
+//       	onPressed: () {
+//         	Navigator.push(
+//           	context,
+//           	MaterialPageRoute(builder: (context) => ProgramSectionPage(semester: semester)),
+//         	);
+//       	},
+//     	),
+//   	),
+// 	);
 //   }
 // }
+
+
+// class ProgramSectionPage extends StatelessWidget {
+//   final int semester;
+
+//   ProgramSectionPage({required this.semester});
+
+//   @override
+//   Widget build(BuildContext context) {
+// 	String selectedProgram = 'CS';
+// 	String selectedSection = 'A';
+
+// 	return Scaffold(
+//   	appBar: AppBar(title: Text('Choose Program and Section')),
+//   	body: Column(
+//     	children: [
+//       	DropdownButton<String>(
+//         	value: selectedProgram,
+//         	items: ['CS', 'SE']
+//             	.map((program) => DropdownMenuItem(value: program, child: Text(program)))
+//             	.toList(),
+//         	onChanged: (value) {
+//           	selectedProgram = value!;
+//         	},
+//       	),
+//       	DropdownButton<String>(
+//         	value: selectedSection,
+//         	items: ['A', 'B', 'C', 'D']
+//             	.map((section) => DropdownMenuItem(value: section, child: Text(section)))
+//             	.toList(),
+//         	onChanged: (value) {
+//           	selectedSection = value!;
+//         	},
+//       	),
+//       	ElevatedButton(
+//         	child: Text('View Timetable'),
+//         	onPressed: () {
+//           	Navigator.push(
+//             	context,
+//             	MaterialPageRoute(
+//               	builder: (context) => TimetablePage(
+//                 	semester: semester,
+//                 	program: selectedProgram,
+//                 	section: selectedSection,
+//               	),
+//             	),
+//           	);
+//         	},
+//       	),
+//     	],
+//   	),
+// 	);
+//   }
+// }
+
+
+// class TimetablePage extends StatelessWidget {
+//   final int semester;
+//   final String program;
+//   final String section;
+
+//   TimetablePage({required this.semester, required this.program, required this.section});
+
+//   @override
+//   Widget build(BuildContext context) {
+// 	return Scaffold(
+//   	appBar: AppBar(title: Text('Timetable')),
+//   	body: Center(
+//     	child: Text(
+//       	'Semester: $semester\nProgram: $program\nSection: $section\n\n[Insert Timetable Here]',
+//       	style: TextStyle(fontSize: 18),
+//       	textAlign: TextAlign.center,
+//     	),
+//   	),
+// 	);
+//   }
+// }
+
